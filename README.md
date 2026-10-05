@@ -57,6 +57,7 @@ hoặc:
 -1 / 1
 
 Các file arff sẵn thì 1 là phising
+
 PhiUSIIL_Phishing_URL_Dataset.csv thì 0 là phising
 
 
