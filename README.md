@@ -1,20 +1,33 @@
 Phishing URL Machine Learning Demo
+
 Ứng dụng web local dùng Flask để thực nghiệm và so sánh các mô hình Machine Learning trên dữ liệu phishing URL.
+
 1.Cài thư viện
+
 python 3.11
+
 Trong CMD, tại thư mục project:
+
 chạy:
+
 python -m venv venv
+
 venv311\Scripts\activate
+
 Chạy:
+
 pip install flask pandas numpy scikit-learn xgboost matplotlib seaborn ucimlrepo
 
 2. Chạy chương trình
+   
 Trong CMD, tại thư mục project:
+
 chạy: 
+
 python app.py
 
 Truy cập
+
 http://127.0.0.1:5001
 
 3. Sử dụng chương trình
