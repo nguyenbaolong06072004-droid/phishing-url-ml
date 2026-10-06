@@ -260,7 +260,7 @@ def find_url_column(df):
     return best if best_score >= 0.25 else None
 
 
-FEATURE_VERSION = 4  # doi bo dac trung URL -> khong dung mo hinh cu
+FEATURE_VERSION = 5  # doi bo dac trung URL -> khong dung mo hinh cu
 
 def normalize_url(u):
     """Bo http://, https://, www. va dau / cuoi de cac cach viet cua cung 1 URL cho cung ket qua."""
@@ -360,9 +360,8 @@ def extract_basic_features(url):
     Host-based/content-based can DNS/WHOIS/truy cap web nen khong tu dong goi
     Internet khi nguoi dung nhap URL.
     """
-    raw = str(url or "").strip()
-    norm = normalize_url(raw)
-    parse_target = raw if re.match(r"^[a-z][a-z0-9+.-]*://", raw, re.I) else "//" + norm
+    norm = normalize_url(url)          # luôn bỏ http://, https://, www. và dấu / cuối
+    parse_target = "//" + norm
     try:
         p = urlsplit(parse_target)
         hostname = (p.hostname or "").lower()
@@ -423,8 +422,7 @@ def extract_basic_features(url):
         "digit_ratio": digits / max(len(norm), 1),
         "query_param_count": query_params,
         "path_depth": path_depth,
-        "has_https": has_https,
-        "has_http": has_http,
+        
         "has_port": has_port,
         "has_punycode": has_punycode,
         "has_encoded_chars": int(encoded_count > 0),
